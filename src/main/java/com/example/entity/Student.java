@@ -4,6 +4,9 @@ import java.io.Serializable;
 import javax.persistence.*;
 import lombok.Data;
 
+/**
+* Created by Mybatis Generator 2019/10/15
+*/
 @Data
 public class Student implements Serializable {
     /**

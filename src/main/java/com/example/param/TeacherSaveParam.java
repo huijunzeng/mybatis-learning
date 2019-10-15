@@ -1,4 +1,4 @@
-package com.example.dto;
+package com.example.param;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -11,17 +11,14 @@ import java.io.Serializable;
  * @Date: 2019/10/15 15:42
  */
 
-@ApiModel(value = "老师信息返回")
+@ApiModel(description = "老师新增参数")
 @Data
-public class TeacherDto implements Serializable {
-
-    @ApiModelProperty("老师id")
-    private String tId;
+public class TeacherSaveParam implements Serializable {
 
     @ApiModelProperty("老师性别")
     private String tSex;
 
-    @ApiModelProperty("老师名字")
+    @ApiModelProperty(value = "老师名字1", name = "老师名字2", notes = "老师名字3")
     private String tName;
 
 }

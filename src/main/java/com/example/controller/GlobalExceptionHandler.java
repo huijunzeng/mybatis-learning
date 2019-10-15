@@ -14,27 +14,10 @@ import java.util.Map;
  * @Date: 2019/10/15 17:21
  */
 
-@RestControllerAdvice
+@RestControllerAdvice // 与@RestController类型，相当于@ResponseBody与@ControllerAdvice的结合体
 @Slf4j
 public class GlobalExceptionHandler {
 
-    /*@org.springframework.web.bind.annotation.ExceptionHandler(CustomizeException.class)
-    @ResponseBody
-    public Response handleStudentException(HttpServletRequest request, CustomizeException ex) {
-        Response response;
-        log.error("StudentException code:{},msg:{}",ex.getResponse().getCode(),ex.getResponse().getMsg());
-        response = new Response(ex.getResponse().getCode(),ex.getResponse().getMsg());
-        return response;
-    }
-    @org.springframework.web.bind.annotation.ExceptionHandler(Exception.class)
-    @ResponseBody
-    public Response handleException(HttpServletRequest request, Exception ex) {
-        Response response;
-        log.error("exception error:{}",ex);
-        response = new Response(BaseResultCodeEnum.FASLE.getCode(),
-                BaseResultCodeEnum.FASLE.getMsg());
-        return response;
-    }*/
     /**
      * 应用到所有@RequestMapping注解方法，在其执行之前初始化数据绑定器
      * @param binder
@@ -58,17 +41,12 @@ public class GlobalExceptionHandler {
      * @param e
      * @return json格式类型
      */
-    @ResponseBody
     @ExceptionHandler(RuntimeException.class)//指定拦截异常的类型 可数组
-    //@ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR) //自定义浏览器返回状态码
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR) //自定义浏览器返回状态码
     public Map<String, Object> customExceptionHandler(CustomizeException e) {
         Map<String, Object> map = new HashMap<>();
-        map.put("code", e.getCode());
-        map.put("msg", e.getMsg());
-/*
         map.put("code", e.getResponse().getCode());
         map.put("msg", e.getResponse().getMsg());
-*/
         return map;
     }
 }
