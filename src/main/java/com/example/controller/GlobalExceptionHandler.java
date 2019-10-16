@@ -14,8 +14,7 @@ import java.util.Map;
  * @Date: 2019/10/15 17:21
  */
 
-@RestControllerAdvice // 与@RestController类型，相当于@ResponseBody与@ControllerAdvice的结合体
-@Slf4j
+//@RestControllerAdvice // 与@RestController类型，相当于@ResponseBody与@ControllerAdvice的结合体
 public class GlobalExceptionHandler {
 
     /**

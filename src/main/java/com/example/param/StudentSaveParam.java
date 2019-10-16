@@ -11,11 +11,11 @@ import java.io.Serializable;
 public class StudentSaveParam implements Serializable {
 
     @ApiModelProperty("班级id")
-    private String cId;
+    private String classId;
 
     @ApiModelProperty("学生性别")
-    private String sSex;
+    private String studentSex;
 
     @ApiModelProperty("学生名字")
-    private String sName;
+    private String studentName;
 }

@@ -12,9 +12,9 @@ import java.io.Serializable;
 public class ClassSaveParam implements Serializable {
 
     @ApiModelProperty("班级名称")
-    private String cName;
+    private String className;
 
     @ApiModelProperty("老师id")
-    private String tId;
+    private String teacherId;
 
 }

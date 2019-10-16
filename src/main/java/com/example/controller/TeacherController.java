@@ -1,17 +1,13 @@
 package com.example.controller;
 
 import com.example.dto.TeacherDto;
-import com.example.exception.BaseResultCodeEnum;
-import com.example.exception.CustomizeException;
 import com.example.param.TeacherSaveParam;
 import com.example.service.TeacherService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Author: ZJH
@@ -26,7 +22,7 @@ public class TeacherController {
     private TeacherService teacherService;
 
     @ApiOperation(value = "老师新增接口")
-    @PostMapping("/test")
+    @RequestMapping(value = "/insert", method = RequestMethod.POST)
     public TeacherDto save(@ApiParam(name = "老师新增接口参数") @RequestBody TeacherSaveParam teacherSaveParam) {
        /* try {
             int a = 1/0;

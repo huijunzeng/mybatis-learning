@@ -1,6 +1,6 @@
 package com.example.service;
 
-import com.example.mapper.TeacherMapper;
+import com.example.mapper.TeacherEntityMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,5 +13,5 @@ import org.springframework.stereotype.Service;
 public class TeacherService {
 
     @Autowired
-    private TeacherMapper teacherMapper;
+    private TeacherEntityMapper mapper;
 }

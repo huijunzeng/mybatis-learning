@@ -16,9 +16,9 @@ import java.io.Serializable;
 public class TeacherSaveParam implements Serializable {
 
     @ApiModelProperty("老师性别")
-    private String tSex;
+    private String teacherSex;
 
-    @ApiModelProperty(value = "老师名字1", name = "老师名字2", notes = "老师名字3")
-    private String tName;
+    @ApiModelProperty("老师名字")
+    private String teacherName;
 
 }

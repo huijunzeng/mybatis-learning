@@ -4,36 +4,34 @@ import java.io.Serializable;
 import javax.persistence.*;
 import lombok.Data;
 
-/**
-* Created by Mybatis Generator 2019/10/15
-*/
+@Table(name = "student")
 @Data
-public class Student implements Serializable {
+public class StudentEntity implements Serializable {
     /**
      * 学生id
      */
     @Id
-    @Column(name = "s_id")
+    @Column(name = "student_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String sId;
+    private String studentId;
 
     /**
      * 班级id
      */
-    @Column(name = "c_id")
-    private String cId;
+    @Column(name = "class_id")
+    private String classId;
 
     /**
      * 学生性别
      */
-    @Column(name = "s_sex")
-    private String sSex;
+    @Column(name = "student_sex")
+    private String studentSex;
 
     /**
      * 学生名字
      */
-    @Column(name = "s_name")
-    private String sName;
+    @Column(name = "student_name")
+    private String studentName;
 
     private static final long serialVersionUID = 1L;
 }

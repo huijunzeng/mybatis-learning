@@ -16,12 +16,12 @@ import java.io.Serializable;
 public class TeacherDto implements Serializable {
 
     @ApiModelProperty("老师id")
-    private String tId;
+    private String teacherId;
 
     @ApiModelProperty("老师性别")
-    private String tSex;
+    private String teacherSex;
 
     @ApiModelProperty("老师名字")
-    private String tName;
+    private String teacherName;
 
 }
