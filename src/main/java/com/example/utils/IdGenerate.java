@@ -71,6 +71,7 @@ public class IdGenerate {
     }
 
     public synchronized long nextId() throws Exception {
+        int a = 1/0;
         long timestamp = this.time();
         if (timestamp < this.lastTimestamp) {
             throw new Exception("时钟向后移动，拒绝生成id  " + (this.lastTimestamp - timestamp) + " milliseconds");

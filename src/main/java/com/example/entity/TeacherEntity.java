@@ -12,7 +12,7 @@ public class TeacherEntity implements Serializable {
      */
     @Id
     @Column(name = "teacher_id")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(generator = "JDBC")
     private String teacherId;
 
     /**

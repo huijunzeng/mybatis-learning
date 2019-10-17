@@ -79,6 +79,11 @@
         </dependency>
 
         <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
@@ -87,7 +92,7 @@
 
     <build>
         <plugins>
-            <!--mybatis自动生成代码插件  用mysql8.0的依赖以及驱动包会报错，可以切换mysql5.8版本以下的依赖-->
+            <!--生成实体maven命令： mvn mybatis-generator:generate -->
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
@@ -101,13 +106,14 @@
                 </configuration>
                 <dependencies>
                     <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+                    <!--mybatis自动生成代码插件  用mysql8.0的依赖以及驱动包会报错，可以切换mysql5.8版本以下的依赖-->
                     <dependency>
                         <groupId>mysql</groupId>
                         <artifactId>mysql-connector-java</artifactId>
                         <version>5.1.45</version>
                     </dependency>
-                    <!-- 通用mapper依赖  假如需要使用通用mapper，放开注释 -->
                     <!-- https://mvnrepository.com/artifact/tk.mybatis/mapper -->
+                    <!-- 通用mapper依赖  假如需要使用通用mapper，放开注释 -->
                     <dependency>
                         <groupId>tk.mybatis</groupId>
                         <artifactId>mapper</artifactId>

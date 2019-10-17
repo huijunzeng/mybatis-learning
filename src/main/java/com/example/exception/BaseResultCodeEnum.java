@@ -3,8 +3,8 @@ package com.example.exception;
 public enum BaseResultCodeEnum implements BaseCodeEnum<Integer, String> {
 
     SUCCESS(200, "成功"),
-    TEST(300, "重试"),
-    FASLE(1001, "操作失败，请重新请求");
+    FASLE(1001, "操作失败，请重新请求"),
+    DATE_PARAM_EMPTY(1002, "日期参数为空");
 
 
     public int code;
