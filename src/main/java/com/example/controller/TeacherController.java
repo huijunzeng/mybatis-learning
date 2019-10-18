@@ -33,7 +33,7 @@ public class TeacherController {
 
     @ApiOperation("老师新增接口")
     @PostMapping(value = "/insert")
-    public void insert(@ApiParam(name = "老师新增接口参数") @RequestBody TeacherSaveParam teacherSaveParam) throws Exception {
+    public void insert(@ApiParam(name = "老师新增接口参数") @RequestBody TeacherSaveParam teacherSaveParam) {
         try {
             teacherService.insert(teacherSaveParam);
         } catch (Exception e) {
@@ -45,11 +45,15 @@ public class TeacherController {
 
     @ApiOperation("老师新增接口")
     @PostMapping(value = "/insertBatch")
-    public void insertBatch(@ApiParam(name = "老师新增接口参数") @RequestBody TeacherSaveListParam teacherSaveListParam) throws Exception {
+    public void insertBatch(@ApiParam(name = "老师新增接口参数") @RequestBody TeacherSaveListParam teacherSaveListParam) {
         try {
             teacherService.insertBatch(teacherSaveListParam);
         } catch (Exception e) {
             e.printStackTrace();
+            if (e instanceof CustomizeException) {
+                CustomizeException customizeException = (CustomizeException) e;
+                throw new CustomizeException(customizeException.getResponse());
+            }
             logger.error("teacher_insertBatch_error:{}", e.getMessage());
             throw new CustomizeException(BaseResultCodeEnum.FASLE);
         }

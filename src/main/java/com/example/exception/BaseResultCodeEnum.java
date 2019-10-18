@@ -4,7 +4,8 @@ public enum BaseResultCodeEnum implements BaseCodeEnum<Integer, String> {
 
     SUCCESS(200, "成功"),
     FASLE(1001, "操作失败，请重新请求"),
-    DATE_PARAM_EMPTY(1002, "日期参数为空");
+    NO_DATA(1002, "数据为空"),
+    DATE_PARAM_EMPTY(1003, "日期参数为空");
 
 
     public int code;
