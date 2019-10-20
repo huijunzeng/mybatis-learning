@@ -10,11 +10,11 @@ import java.io.Serializable;
 @Data
 public class StudentDto implements Serializable {
 
-    @ApiModelProperty("学生id")
-    private String studentId;
-
     @ApiModelProperty("班级id")
     private String classId;
+
+    @ApiModelProperty("学生id")
+    private String studentId;
 
     @ApiModelProperty("学生性别")
     private String studentSex;

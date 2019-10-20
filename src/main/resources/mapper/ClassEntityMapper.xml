@@ -7,6 +7,112 @@
     -->
     <id column="class_id" property="classId" jdbcType="VARCHAR" />
     <result column="class_name" property="className" jdbcType="VARCHAR" />
-    <result column="teacher_id" property="teacherId" jdbcType="VARCHAR" />
   </resultMap>
+
+  <resultMap id="ClassDtlListDtoMap" type="com.example.dto.ClassDtlListDto" >
+    <id column="class_id" property="classId" jdbcType="VARCHAR" />
+    <result column="class_name" property="className" jdbcType="VARCHAR" />
+    <collection property="classTeacherRelList" ofType="com.example.dto.ClassTeacherRelDto">
+      <id column="teacher_id" property="teacherId" jdbcType="VARCHAR" />
+      <result column="class_id" property="classId" jdbcType="VARCHAR" />
+      <result column="teacher_sex" property="teacherSex" jdbcType="VARCHAR" />
+      <result column="teacher_name" property="teacherName" jdbcType="VARCHAR" />
+    </collection>
+    <collection property="classStudentRelList" ofType="com.example.dto.ClassStudentRelDto">
+      <id column="student_id" property="studentId" jdbcType="VARCHAR" />
+      <result column="class_id" property="classId" jdbcType="VARCHAR" />
+      <result column="student_sex" property="studentSex" jdbcType="VARCHAR" />
+      <result column="student_name" property="studentName" jdbcType="VARCHAR" />
+    </collection>
+  </resultMap>
+
+  <resultMap id="ClassDtlListDtoPageHelperMap" type="com.example.dto.ClassDtlListDto" >
+    <id column="class_id" property="classId" jdbcType="VARCHAR" />
+    <result column="class_name" property="className" jdbcType="VARCHAR" />
+    <collection property="classTeacherRelList" ofType="com.example.dto.ClassTeacherRelDto" column="class_id" select="selectTeacherListByClassId">
+    </collection>
+    <collection property="classStudentRelList" ofType="com.example.dto.ClassStudentRelDto" column="class_id" select="selectStudentListByClassId">
+    </collection>
+  </resultMap>
+  <resultMap id="classTeacherRelDto" type="com.example.dto.ClassTeacherRelDto">
+    <id column="teacher_id" property="teacherId" jdbcType="VARCHAR" />
+    <result column="class_id" property="classId" jdbcType="VARCHAR" />
+    <result column="teacher_sex" property="teacherSex" jdbcType="VARCHAR" />
+    <result column="teacher_name" property="teacherName" jdbcType="VARCHAR" />
+  </resultMap>
+  <resultMap id="classStudentRelDto" type="com.example.dto.ClassStudentRelDto">
+    <id column="student_id" property="studentId" jdbcType="VARCHAR" />
+    <result column="class_id" property="classId" jdbcType="VARCHAR" />
+    <result column="student_sex" property="studentSex" jdbcType="VARCHAR" />
+    <result column="student_name" property="studentName" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <insert id="insertBatch">
+    INSERT INTO teacher
+    (class_id, class_name)
+    VALUES
+    <foreach collection="saveList" item="item" separator=",">
+      (
+      #{item.classId},
+      #{item.className}
+      )
+  </foreach>
+  </insert>
+
+  <select id="selectTotalRecord" resultType="java.lang.Integer">
+    SELECT COUNT(classId) FROM class
+    <where>
+      <if test="className != null and className != ''">
+        class_name LIKE CONCAT('%', #{className,jdbcType=VARCHAR}, '%')
+      </if>
+    </where>
+  </select>
+
+  <select id="selectDtlListByParam" resultType="com.example.dto.ClassDtlListDto">
+    SELECT *
+    FROM class t1 JOIN teacher t2 ON t1.class_id = t2.class_id JOIN student t3 ON t1.class_id = t3.class_id
+    <where>
+      <if test="className != null and className != ''">
+        t1.class_name LIKE CONCAT('%', #{className,jdbcType=VARCHAR}, '%')
+      </if>
+    </where>
+  </select>
+
+  <select id="selectDtlListByPage" resultMap="ClassDtlListDtoMap">
+    SELECT *
+    FROM (SELECT * FROM class LIMIT #{startIndex}, #{pageSize}) t1 JOIN teacher t2 ON t1.class_id = t2.class_id JOIN student t3 ON t1.class_id = t3.class_id
+    <where>
+      <if test="className != null and className != ''">
+        t1.class_name LIKE CONCAT('%', #{className,jdbcType=VARCHAR}, '%')
+      </if>
+    </where>
+  </select>
+
+  <select id="selectDtlListByPageHelper" resultMap="ClassDtlListDtoPageHelperMap">
+    SELECT *
+    FROM class
+    <where>
+      <if test="className != null and className != ''">
+        class_name LIKE CONCAT('%', #{className,jdbcType=VARCHAR}, '%')
+      </if>
+    </where>
+  </select>
+  <select id="selectTeacherListByClassId" resultMap="classTeacherRelDto">
+    SELECT *
+    FROM teacher
+    <where>
+      <if test="classId != null and classId != ''">
+        class_id LIKE CONCAT('%', #{classId,jdbcType=VARCHAR}, '%')
+      </if>
+    </where>
+  </select>
+  <select id="selectStudentListByClassId" resultMap="classStudentRelDto">
+    SELECT *
+    FROM student
+    <where>
+      <if test="classId != null and classId != ''">
+        class_id LIKE CONCAT('%', #{classId,jdbcType=VARCHAR}, '%')
+      </if>
+    </where>
+  </select>
 </mapper>

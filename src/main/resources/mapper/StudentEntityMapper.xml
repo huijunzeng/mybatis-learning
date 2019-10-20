@@ -10,4 +10,25 @@
     <result column="student_sex" property="studentSex" jdbcType="VARCHAR" />
     <result column="student_name" property="studentName" jdbcType="VARCHAR" />
   </resultMap>
+
+  <resultMap id="StudentDtoMap" type="com.example.dto.StudentDto" >
+    <id column="student_id" property="studentId" jdbcType="VARCHAR" />
+    <result column="class_id" property="classId" jdbcType="VARCHAR" />
+    <result column="student_sex" property="studentSex" jdbcType="VARCHAR" />
+    <result column="student_name" property="studentName" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <insert id="insertBatch">
+    INSERT INTO student
+    (student_id, class_id, student_sex, student_name)
+    VALUES
+    <foreach collection="saveList" item="item" separator=",">
+      (
+      #{item.studentId},
+      #{item.classId},
+      #{item.studentSex},
+      #{item.studentName}
+      )
+    </foreach>
+  </insert>
 </mapper>

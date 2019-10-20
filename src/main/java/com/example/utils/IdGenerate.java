@@ -1,8 +1,7 @@
 package com.example.utils;
 
 /**
- * @Author: ZJH
- * @Date: 2019/10/15 15:21
+ * id生成器  雪花
  */
 
 import java.net.InetAddress;
@@ -71,7 +70,6 @@ public class IdGenerate {
     }
 
     public synchronized long nextId() throws Exception {
-        int a = 1/0;
         long timestamp = this.time();
         if (timestamp < this.lastTimestamp) {
             throw new Exception("时钟向后移动，拒绝生成id  " + (this.lastTimestamp - timestamp) + " milliseconds");
