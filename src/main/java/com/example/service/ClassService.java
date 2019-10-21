@@ -24,7 +24,7 @@ import static com.example.exception.ThrowingWrapper.throwingConsumerWrapper;
  */
 
 @Service
-public class ClassSerice {
+public class ClassService {
 
     @Autowired
     private ClassEntityMapper entityMapper;

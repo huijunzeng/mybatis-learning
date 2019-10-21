@@ -18,9 +18,6 @@ public class TeacherUpdateParam implements Serializable {
     @ApiModelProperty("老师id")
     private String teacherId;
 
-    @ApiModelProperty("班级id")
-    private String classId;
-
     @ApiModelProperty("老师性别")
     private String teacherSex;
 

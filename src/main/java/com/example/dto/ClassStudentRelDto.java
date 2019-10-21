@@ -16,9 +16,6 @@ import java.io.Serializable;
 @Data
 public class ClassStudentRelDto implements Serializable {
 
-    @ApiModelProperty("班级id")
-    private String classId;
-
     @ApiModelProperty("学生id")
     private String studentId;
 

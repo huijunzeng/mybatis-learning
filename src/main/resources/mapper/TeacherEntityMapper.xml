@@ -16,11 +16,12 @@
 
   <insert id="insertBatch">
     INSERT INTO teacher
-    (teacher_id, teacher_sex, teacher_name)
+    (teacher_id, class_id, teacher_sex, teacher_name)
     VALUES
     <foreach collection="saveList" item="item" separator=",">
       (
       #{item.teacherId},
+      #{item.classId},
       #{item.teacherSex},
       #{item.teacherName}
       )
@@ -31,20 +32,20 @@
     UPDATE teacher
     SET teacher_sex = #{teacherSex}
     WHERE teacher_id IN
-    <foreach collection="tidList" index="index" item="teacherId" open="(" separator="," close=")">
+    <foreach collection="idList" index="index" item="teacherId" open="(" separator="," close=")">
       #{teacherId}
     </foreach>
   </update>
 
   <update id="updateBatch2">
     UPDATE teacher
-    SET sex = CASE
-    <foreach collection="teacherUpdateOneFieldMoreValuesParam" item="item" index="index">
+    SET class_id = CASE
+    <foreach collection="teacherList" item="item" index="index">
       WHEN teacher_id = #{item.teacherId} THEN #{item.classId}
     </foreach>
     END
     WHERE teacher_id IN
-    <foreach collection="teacherUpdateOneFieldMoreValuesParam" index="index" item="item" open="(" separator="," close=")">
+    <foreach collection="teacherList" index="index" item="item" open="(" separator="," close=")">
       #{item.teacherId}
     </foreach>
   </update>
@@ -52,17 +53,17 @@
   <update id="updateBatch3">
     UPDATE teacher
     <trim prefix="SET" suffixOverrides=",">
-      <trim prefix="name = CASE" suffix="END,">
-        <foreach collection="teacherUpdateMoreFieldsMoreValuesParam" item="item" index="index">
-          <if test="item.name != null and item.name != ''">
-            WHEN tid = #{item.teacherId} THEN #{item.classId}
+      <trim prefix="teacher_name = CASE" suffix="END,">
+        <foreach collection="teacherList" item="item" index="index">
+          <if test="item.teacherName != null and item.teacherName != ''">
+            WHEN teacher_id = #{item.teacherId} THEN #{item.teacherName}
           </if>
         </foreach>
       </trim>
-      <trim prefix="sex = CASE" suffix="END,">
-        <foreach collection="teacherUpdateMoreFieldsMoreValuesParam" item="item" index="index">
-          <if test="item.sex != null and item.sex != ''">
-            WHEN tid = #{item.teacherId} THEN #{item.teacherSex}
+      <trim prefix="teacher_sex = CASE" suffix="END,">
+        <foreach collection="teacherList" item="item" index="index">
+          <if test="item.teacherSex != null and item.teacherSex != ''">
+            WHEN teacher_id = #{item.teacherId} THEN #{item.teacherSex}
           </if>
         </foreach>
       </trim>

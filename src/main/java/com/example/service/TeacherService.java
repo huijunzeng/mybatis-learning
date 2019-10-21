@@ -45,10 +45,12 @@ public class TeacherService {
     }
 
     public void updateBatch2(TeacherUpdateOneFieldMoreValuesParam teacherUpdateOneFieldMoreValuesParam) {
-        entityMapper.updateBatch2(teacherUpdateOneFieldMoreValuesParam);
+        List<TeacherUpdateClassIdParam> teacherList = teacherUpdateOneFieldMoreValuesParam.getTeacherList();
+        entityMapper.updateBatch2(teacherList);
     }
 
     public void updateBatch3(TeacherUpdateMoreFieldsMoreValuesParam teacherUpdateMoreFieldsMoreValuesParam) {
-        entityMapper.updateBatch3(teacherUpdateMoreFieldsMoreValuesParam);
+        List<TeacherUpdateParam> teacherList = teacherUpdateMoreFieldsMoreValuesParam.getTeacherList();
+        entityMapper.updateBatch3(teacherList);
     }
 }

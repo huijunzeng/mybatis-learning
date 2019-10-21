@@ -1,8 +1,8 @@
 package com.example.mapper;
 
 import com.example.entity.TeacherEntity;
-import com.example.param.TeacherUpdateMoreFieldsMoreValuesParam;
-import com.example.param.TeacherUpdateOneFieldMoreValuesParam;
+import com.example.param.TeacherUpdateClassIdParam;
+import com.example.param.TeacherUpdateParam;
 import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.BaseMapper;
 
@@ -14,7 +14,7 @@ public interface TeacherEntityMapper extends BaseMapper<TeacherEntity> {
 
     void updateBatch1(@Param("teacherSex") String teacherSex, @Param("idList") List<String> idList);
 
-    void updateBatch2(@Param("teacherUpdateOneFieldMoreValuesParam") TeacherUpdateOneFieldMoreValuesParam teacherUpdateOneFieldMoreValuesParam);
+    void updateBatch2(@Param("teacherList") List<TeacherUpdateClassIdParam> teacherList);
 
-    void updateBatch3(@Param("teacherUpdateMoreFieldsMoreValuesParam") TeacherUpdateMoreFieldsMoreValuesParam teacherUpdateMoreFieldsMoreValuesParam);
+    void updateBatch3(@Param("teacherList") List<TeacherUpdateParam> teacherList);
 }

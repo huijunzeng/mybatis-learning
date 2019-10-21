@@ -7,7 +7,7 @@ import com.example.param.ClassDtlListPageQueryParam;
 import com.example.param.ClassDtlListQueryParam;
 import com.example.param.ClassSaveListParam;
 import com.example.param.ClassSaveParam;
-import com.example.service.ClassSerice;
+import com.example.service.ClassService;
 import com.example.utils.PageInfo;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -27,7 +27,7 @@ import java.util.List;
  * @Date: 2019/10/15 15:10
  */
 
-@Api(tags = "老师接口")
+@Api(tags = "班级接口")
 @RequestMapping("/class")
 @RestController
 public class ClassController {
@@ -35,13 +35,13 @@ public class ClassController {
     private static final Logger logger = LoggerFactory.getLogger(ClassController.class);
     
     @Autowired
-    private ClassSerice classSerice;
+    private ClassService classService;
 
     @ApiOperation("班级新增接口")
     @PostMapping(value = "/insert")
     public void insert(@ApiParam(name = "班级新增接口参数") @RequestBody ClassSaveParam classSaveParam) {
         try {
-            classSerice.insert(classSaveParam);
+            classService.insert(classSaveParam);
         } catch (Exception e) {
             e.printStackTrace();
             logger.error("class_insert_error:{}", e.getMessage());
@@ -56,7 +56,7 @@ public class ClassController {
     @PostMapping(value = "/insertBatch")
     public void insertBatch(@ApiParam(name = "班级批量新增接口") @RequestBody ClassSaveListParam classSaveListParam) {
         try {
-            classSerice.insertBatch(classSaveListParam);
+            classService.insertBatch(classSaveListParam);
         } catch (Exception e) {
             e.printStackTrace();
             logger.error("class_insertBatch_error:{}", e.getMessage());
@@ -71,7 +71,7 @@ public class ClassController {
     @PostMapping(value = "/selectDtlListByParam")
     public List<ClassDtlListDto> selectDtlListByParam(@ApiParam(name = "班级详情列表查询接口") @RequestBody ClassDtlListQueryParam classDtlListQueryParam) {
         try {
-            return classSerice.selectDtlListByParam(classDtlListQueryParam);
+            return classService.selectDtlListByParam(classDtlListQueryParam);
         } catch (Exception e) {
             e.printStackTrace();
             logger.error("class_selectDtlListByParam_error:{}", e.getMessage());
@@ -88,7 +88,7 @@ public class ClassController {
     @PostMapping(value = "/selectDtlListByPage")
     public PageInfo selectDtlListByPage(@ApiParam(name = "班级详情分页查询接口 手动分页") @RequestBody ClassDtlListPageQueryParam classDtlListPageQueryParam) {
         try {
-            return classSerice.selectDtlListByPage(classDtlListPageQueryParam);
+            return classService.selectDtlListByPage(classDtlListPageQueryParam);
         } catch (Exception e) {
             e.printStackTrace();
             logger.error("class_selectDtlListByPage_error:{}", e.getMessage());
@@ -106,7 +106,7 @@ public class ClassController {
     @PostMapping(value = "/selectDtlListByPageHelper")
     public com.github.pagehelper.PageInfo selectDtlListByPageHelper(@ApiParam(name = "班级详情分页查询接口 PageHelper工具分页") @RequestBody ClassDtlListPageQueryParam classDtlListPageQueryParam) {
         try {
-            return classSerice.selectDtlListByPageHelper(classDtlListPageQueryParam);
+            return classService.selectDtlListByPageHelper(classDtlListPageQueryParam);
         } catch (Exception e) {
             e.printStackTrace();
             logger.error("class_selectDtlListByPageHelper_error:{}", e.getMessage());

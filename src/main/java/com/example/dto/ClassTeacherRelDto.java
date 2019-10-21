@@ -17,9 +17,6 @@ import java.io.Serializable;
 public class ClassTeacherRelDto implements Serializable {
 
 
-    @ApiModelProperty("班级id")
-    private String classId;
-
     @ApiModelProperty("老师id")
     private String teacherId;
 

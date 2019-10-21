@@ -4,11 +4,13 @@ import com.example.dto.ClassDtlListDto;
 import com.example.dto.ClassStudentRelDto;
 import com.example.dto.ClassTeacherRelDto;
 import com.example.entity.ClassEntity;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import tk.mybatis.mapper.common.BaseMapper;
 
 import java.util.List;
 
+//@Mapper
 public interface ClassEntityMapper extends BaseMapper<ClassEntity> {
 
     void insertBatch(@Param("saveList") List<ClassEntity> saveList);
