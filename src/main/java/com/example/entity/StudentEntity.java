@@ -4,6 +4,9 @@ import java.io.Serializable;
 import javax.persistence.*;
 import lombok.Data;
 
+/**
+* Created by Mybatis Generator 2019/10/20
+*/
 @Table(name = "student")
 @Data
 public class StudentEntity implements Serializable {
@@ -22,7 +25,7 @@ public class StudentEntity implements Serializable {
     private String classId;
 
     /**
-     * 学生性别
+     * 学生性别简码
      */
     @Column(name = "student_sex")
     private String studentSex;

@@ -19,6 +19,10 @@ import com.example.exception.CustomizeException;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 
+/**
+ * 日期工具类
+ */
+
 public class DateUtils {
     public static final String DATE_PATTERN = "yyyy-MM-dd";
     public static final String TIMESTAMP_PATTERN = "yyyy-MM-dd HH:mm:ss";

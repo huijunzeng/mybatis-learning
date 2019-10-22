@@ -6,21 +6,16 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @Author: ZJH
  * @Date: 2019/10/15 15:42
  */
 
-@ApiModel(value = "老师信息返回")
+@ApiModel(value = "老师分页信息返回")
 @Data
-public class TeacherDto implements Serializable {
-
-    @ApiModelProperty("班级id")
-    private String classId;
-
-    @ApiModelProperty("老师id")
-    private String teacherId;
+public class TeacherDtlListDto implements Serializable {
 
     @ApiModelProperty("老师性别简码")
     private String teacherSex;
@@ -30,6 +25,12 @@ public class TeacherDto implements Serializable {
 
     @ApiModelProperty("老师名字")
     private String teacherName;
+
+    @ApiModelProperty("老师班级关联信息list")
+    private List<ClassTeacherRelDto> teacherClassRelList;
+
+    @ApiModelProperty("班级学生关联信息list")
+    private List<ClassStudentRelDto> classStudentRelList;
 
     public String getTeacherSexName() {
         if (this.teacherSex == null) {

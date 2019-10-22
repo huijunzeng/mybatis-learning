@@ -1,8 +1,7 @@
 package com.example.utils;
 
 /**
- * @Author: ZJH
- * @Date: 2019/10/15 15:21
+ * id生成器  雪花
  */
 
 import java.net.InetAddress;

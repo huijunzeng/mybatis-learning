@@ -19,6 +19,10 @@ import java.util.concurrent.ConcurrentHashMap;
 import com.example.constant.BaseEnum;
 import org.apache.commons.lang3.StringUtils;
 
+/**
+ * bean复制类
+ */
+
 public class BeanConverter {
     private static Map<String, Map<String, PropertyDescriptor>> propertyDescriptorCache = new ConcurrentHashMap();
     private static Map<String, List<String>> fieldCache = new HashMap();

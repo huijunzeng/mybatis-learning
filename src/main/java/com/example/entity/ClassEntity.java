@@ -4,6 +4,9 @@ import java.io.Serializable;
 import javax.persistence.*;
 import lombok.Data;
 
+/**
+* Created by Mybatis Generator 2019/10/20
+*/
 @Table(name = "class")
 @Data
 public class ClassEntity implements Serializable {
@@ -20,12 +23,6 @@ public class ClassEntity implements Serializable {
      */
     @Column(name = "class_name")
     private String className;
-
-    /**
-     * 老师id
-     */
-    @Column(name = "teacher_id")
-    private String teacherId;
 
     private static final long serialVersionUID = 1L;
 }

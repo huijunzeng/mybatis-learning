@@ -16,9 +16,9 @@
     <!-- 必须 映射数据库配置  注意：mysql8.0版本以上的，driverClass驱动类需配置为com.mysql.jdbc.Driver， 而不是properties文件中的com.mysql.cj.jdbc.Driver -->
     <jdbcConnection
             driverClass="com.mysql.jdbc.Driver"
-            connectionURL="jdbc:mysql://47.112.13.245:40004/test?allowMultiQueries=true&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;autoReconnect=true"
+            connectionURL="jdbc:mysql://localhost:3306/test?allowMultiQueries=true&amp;useUnicode=true&amp;characterEncoding=utf-8&amp;useSSL=false&amp;autoReconnect=true"
             userId="root"
-            password="ystmysqlroot123"/>
+            password="123456"/>
 
     <!-- 生成实体类对象，放在工程src/main/java层级的com.example.entity包下  targetPackage不存在会自动创建，targetProject不存在则不自动创建，所以必须指明已存在的路径 -->
     <javaModelGenerator targetPackage="com.example.entity" targetProject="src/main/java">

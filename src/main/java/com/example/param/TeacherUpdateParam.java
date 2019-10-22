@@ -11,12 +11,12 @@ import java.io.Serializable;
  * @Date: 2019/10/15 15:42
  */
 
-@ApiModel(description = "老师新增参数")
+@ApiModel(description = "老师更新参数")
 @Data
-public class TeacherSaveParam implements Serializable {
+public class TeacherUpdateParam implements Serializable {
 
-    @ApiModelProperty("班级id")
-    private String classId;
+    @ApiModelProperty("老师id")
+    private String teacherId;
 
     @ApiModelProperty("老师性别")
     private String teacherSex;

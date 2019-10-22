@@ -17,7 +17,4 @@ public class ClassDto implements Serializable {
     @ApiModelProperty("班级名称")
     private String className;
 
-    @ApiModelProperty("老师id")
-    private String teacherId;
-
 }

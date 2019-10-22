@@ -5,23 +5,21 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @Author: ZJH
  * @Date: 2019/10/15 15:42
  */
 
-@ApiModel(description = "老师新增参数")
+@ApiModel(description = "老师批量更新参数 对多条数据的同一个字段更新为同一个值")
 @Data
-public class TeacherSaveParam implements Serializable {
-
-    @ApiModelProperty("班级id")
-    private String classId;
+public class TeacherUpdateOneFieldOneValueParam implements Serializable {
 
     @ApiModelProperty("老师性别")
     private String teacherSex;
 
-    @ApiModelProperty("老师名字")
-    private String teacherName;
+    @ApiModelProperty("id数组")
+    private List<String> idList;
 
 }

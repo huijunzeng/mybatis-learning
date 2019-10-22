@@ -12,12 +12,10 @@ import java.io.Serializable;
  * @Date: 2019/10/15 15:42
  */
 
-@ApiModel(value = "老师信息返回")
+@ApiModel(value = "班级老师关联信息返回")
 @Data
-public class TeacherDto implements Serializable {
+public class ClassTeacherRelDto implements Serializable {
 
-    @ApiModelProperty("班级id")
-    private String classId;
 
     @ApiModelProperty("老师id")
     private String teacherId;
@@ -45,4 +43,5 @@ public class TeacherDto implements Serializable {
     public void setTeacherSexName(String teacherSexName) {
         this.teacherSexName = teacherSexName;
     }
+
 }
