@@ -13,6 +13,7 @@ import com.example.utils.PageInfo;
 import com.github.pagehelper.PageHelper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -29,12 +30,14 @@ public class ClassService {
     @Autowired
     private ClassEntityMapper entityMapper;
 
+    @Transactional(rollbackFor = Exception.class)
     public void insert(ClassSaveParam classSaveParam) throws Exception {
         ClassEntity classEntity = BeanConverter.copy(classSaveParam, ClassEntity.class);
         classEntity.setClassId(String.valueOf(IdGenerate.getInstance().nextId()));
         entityMapper.insertSelective(classEntity);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public void insertBatch(ClassSaveListParam classSaveListParam) {
         List<ClassSaveParam> classList = classSaveListParam.getClassList();
         if (classList != null && !classList.isEmpty()) {
