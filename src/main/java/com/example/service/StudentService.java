@@ -8,6 +8,7 @@ import com.example.utils.BeanConverter;
 import com.example.utils.IdGenerate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -24,12 +25,14 @@ public class StudentService {
     @Autowired
     private StudentEntityMapper entityMapper;
 
+    @Transactional(rollbackFor = Exception.class)
     public void insert(StudentSaveParam studentSaveParam) throws Exception {
         StudentEntity studentEntity = BeanConverter.copy(studentSaveParam, StudentEntity.class);
         studentEntity.setStudentId(String.valueOf(IdGenerate.getInstance().nextId()));
         entityMapper.insertSelective(studentEntity);
     }
 
+    @Transactional(rollbackFor = Exception.class)
     public void insertBatch(StudentSaveListParam studentSaveListParam) {
         List<StudentSaveParam> studentList = studentSaveListParam.getStudentList();
         if (studentList != null && !studentList.isEmpty()) {
